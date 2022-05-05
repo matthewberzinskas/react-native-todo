@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 const Task = (props) => {
   return (
@@ -10,8 +10,6 @@ const Task = (props) => {
         <Text style={styles.itemText}>{props.text}</Text>
       </View>
       <View style={styles.circular}></View>
-
-      {/** Add a new task*/}
     </View>
   );
 };
