@@ -1,7 +1,22 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+
+import { AntDesign } from "@expo/vector-icons";
 
 const Task = (props) => {
+  const [status, setStatus] = useState("");
+  const [complete, setComplete] = useState(false);
+
+  const handleStatusChange = () => {
+    if (complete) {
+      setStatus("Todo");
+      setComplete(false);
+    } else {
+      setStatus("Complete");
+      setComplete(true);
+    }
+  };
+
   return (
     <View style={styles.item}>
       {/** Task Display */}
@@ -9,7 +24,15 @@ const Task = (props) => {
         <View style={styles.square}></View>
         <Text style={styles.itemText}>{props.text}</Text>
       </View>
-      <View style={styles.circular}></View>
+      <TouchableOpacity onPress={() => handleStatusChange()}>
+        <Text style={styles.addText}>
+          {complete ? (
+            <AntDesign name="checkcircleo" size={24} color="black" />
+          ) : (
+            <AntDesign name="minussquareo" size={24} color="black" />
+          )}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -39,13 +62,6 @@ const styles = StyleSheet.create({
     opacity: 0.4,
     borderRadius: 5,
     marginRight: 15,
-  },
-  circular: {
-    width: 12,
-    height: 12,
-    borderColor: "#55BCF6",
-    borderWidth: 2,
-    borderRadius: 5,
   },
 });
 

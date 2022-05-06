@@ -8,7 +8,6 @@ import {
   TextInput,
   TouchableOpacity,
   Keyboard,
-  Button,
 } from "react-native";
 
 import uuid from "react-native-uuid";
@@ -49,7 +48,7 @@ export default function App() {
             return (
               <TouchableOpacity
                 key={uuid.v1()}
-                onPress={() => handleCompleteTask(index)}
+                //onPress={() => handleCompleteTask(index)}
               >
                 <Task text={item} />
               </TouchableOpacity>
